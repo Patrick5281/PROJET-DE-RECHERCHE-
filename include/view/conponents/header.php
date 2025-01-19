@@ -21,7 +21,7 @@ require_once __DIR__ . '/../../../config/database.php';
 
         <h1 class="m-0 fw-bold">INSTI</h1>
 
-        <p class="m-0">Institut Nationale Supérieur de Technologie Industrielle <br /> de Lokossa</p>
+        <p class="m-0">Instituttt Nationale Supérieur de Technologie Industrielle <br /> de Lokossa</p>
 
     </div>
 

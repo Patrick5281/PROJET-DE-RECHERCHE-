@@ -1,0 +1,415 @@
+/* HEADER */
+header {
+  height: 73px;
+  /* Hauteur uniforme pour tout le header */
+  background-color: #0D4293;
+  /* Couleur de fond */
+  display: flex;
+  /* Utilisation de Flexbox pour aligner les éléments */
+  align-items: center;
+  /* Centre les éléments verticalement */
+  justify-content: space-between;
+  /* Espace équitable entre les éléments */
+  padding: 0 15px;
+  /* Ajoute un espace intérieur à gauche et à droite */
+  box-sizing: border-box;
+  /* Inclut le padding dans la hauteur/largeur totale */
+}
+
+.logo-container .logo-container1 {
+  height: 73px;
+  /* Ajuste la hauteur pour correspondre au header */
+  width: 73px;
+  /* Assure une largeur identique */
+  background-color: white;
+  /* Fond blanc pour le conteneur */
+  display: flex;
+  /* Centre le logo à l'intérieur */
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  /* Décale un peu le logo du bord gauche */
+  margin-right: 10px;
+  /* Décale un peu le logo du bord droit (si nécessaire) */
+}
+
+.logo-container1 {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container img .logo-container1 img {
+  max-width: 90%;
+  /* Empêche le logo de dépasser */
+  max-height: 90%;
+  /* Ajuste la taille pour qu'elle reste proportionnelle */
+  object-fit: contain;
+  /* Garde les proportions de l'image */
+}
+
+.text-container h1 {
+  font-size: 1.2rem;
+  /* Ajuste la taille du texte principal */
+  margin: 0;
+  /* Enlève les marges par défaut */
+}
+
+.text-container p {
+  font-size: 0.7rem;
+  /* Ajuste la taille du sous-titre */
+  margin: 0;
+  /* Enlève les marges par défaut */
+  margin-top: 5px;
+  /* Ajoute un petit espace entre les lignes */
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  /* Centre les liens verticalement */
+}
+
+.links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: white;
+  /* Assure une couleur blanche */
+  margin: 0 10px;
+  /* Ajoute de l'espace entre les liens */
+}
+
+.links a:hover {
+  text-decoration: underline;
+  /* Donne un effet au survol */
+}
+
+/* Ajout d'espacement horizontal entre les liens */
+.nav-item {
+  margin: 0 20px;
+  /* Ajoute de l'espace à gauche et à droite des liens */
+}
+
+/* Style de la navbar */
+.custom-navbar {
+  background-color: white;
+  padding: 0;
+  /* Enlève l'espacement vertical supplémentaire */
+}
+
+/* Style des liens de navigation */
+.nav-item .nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 15.85px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #0D4293;
+  padding: 15px 20px;
+  /* Ajuste l'espacement autour des liens */
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  /* Alignement vertical */
+  height: 80px;
+  /* Définit la hauteur pour s'aligner avec le logo */
+}
+
+.nav-item .nav-link:hover {
+  color: #0056b3;
+}
+
+/* Logo central */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  /* Même hauteur que les liens */
+  width: 227px;
+}
+
+
+/* Ajuste la hauteur globale de la navbar */
+.navbar-nav {
+  align-items: center;
+  /* Aligne tous les éléments au centre verticalement */
+}
+
+/* Responsiveness pour ajuster les espacements sur mobile */
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+    /* Moins d'espace entre les liens sur mobile */
+  }
+}
+
+.custom-tainer h1 {
+  color: black;
+
+}
+/* FOOTER */
+footer {
+  background-color: #0D4293; /* Couleur principale */
+  color: white; /* Texte en blanc */
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+footer h5 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffcc00; /* Change la couleur au survol */
+}
+
+footer img {
+  max-width: 100%;
+  height: auto;
+}
+
+.underline {
+  height: 2px; /* Hauteur du trait */
+  width: 400px; /* Largeur du trait */
+  background-color: white; /* Couleur du trait */
+  margin: 0 auto; /* Centrer */
+}
+
+.icon-white {
+  filter: invert(1) brightness(2); /* Rend les icônes blanches */
+}
+
+/* Optionnel : Ajoute un effet au survol */
+.icon-white:hover {
+  filter: invert(1) brightness(2.5);
+}
+
+
+
+/* XXXXXXXXXX */
+/* Style pour la superposition sombre */
+ .presentation-section {
+  position: relative;
+  height: 400px;
+}
+.presentation-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* S'assure que l'image s'ajuste bien */
+}
+.presentation-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay sombre */
+  z-index: 1;
+}
+.presentation-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: white;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* XXXXXXXX */
+/* Style personnalisé */
+        .project-info {
+          background-color: #f8f9fa; /* Couleur de fond légère */
+          padding: 30px;
+          border-radius: 10px;
+      }
+
+      .project-info .info-item {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 10px 0;
+          text-align: center;
+      }
+
+      .project-info .icon-title {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .project-info .icon {
+          width: 40px;
+          height: 40px;
+          background-color: #007bff; /* Bleu pour les icônes */
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          font-size: 20px;
+          margin-right: 10px;
+      }
+
+      .project-info h6 {
+          font-weight: bold;
+          color: #343a40;
+          margin: 0;
+      }
+
+      .project-info p {
+          color: #6c757d;
+          margin: 5px 0 0;
+      }
+      
+    /* PROJET_DETAILS */
+
+    /* Custom Styles for the Video and the Divider */
+      .video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .video-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    .vertical-divider {
+        border-left: 2px solid #ccc;
+    }
+    .bar {
+        height: 5px;
+        background-color: #007bff;
+        width: 40%;
+        margin-bottom: 10px;
+    }
+    .content-section {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    
+    
+    
+    /* Custom Styles for the Image and Divider */
+     .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+  }
+  .vertical-divider {
+      border-left: 2px solid #ccc;
+  }
+  .bar {
+      height: 5px;
+      background-color: #007bff;
+      width: 40%;
+      margin-bottom: 10px;
+  }
+  .content-section {
+      padding-left: 30px;
+  }
+
+   /* Réduction de la hauteur des images */
+   .carousel-item img.reduced-height {
+    max-height: 400px; /* Ajustez cette valeur pour contrôler la hauteur */
+    object-fit: cover;
+  }
+
+/*CREATE Projet*/
+ body {
+  background-color: #f8f9fa; /* Couleur de fond neutre */
+  }
+  .form-container {
+      background-color: #ffffff; /* Fond blanc pour le formulaire */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 900px;
+  }
+  .form-title {
+      color: #0d47a1; /* Couleur principale (bleu) */
+      font-weight: bold;
+  }
+  .btn-publish {
+      background-color: #0d47a1;
+      color: #ffffff;
+  }
+  .btn-publish:hover {
+      background-color: #0b3d91;
+  }
+/* design de la page createProjet.php */
+  .form-container {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.d-flex {
+    display: flex;
+    gap: 20px;
+}
+
+.flex-grow-2 {
+    flex: 2;
+}
+
+.flex-grow-1 {
+    flex: 1;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.form-part-2 {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-publish {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.btn-publish:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+

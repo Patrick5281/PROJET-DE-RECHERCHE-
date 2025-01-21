@@ -22,7 +22,7 @@ include 'include/view/conponents/header.php';
     </div>
     <!-- Lien vers la page de création de projet -->
         <div class="text-center">
-            <a href="include/view/user/annonces.php" class="btn btn-primary">Créer un nouveau projet</a>
+            <a href="include/view/admin/createAnnonce.php" class="btn btn-primary">Créer un nouveau projet</a>
         </div>
 </main>
 

@@ -1,44 +1,41 @@
 <?php
+require_once __DIR__ . "/../../include/model/admin.php";
 
-require_once __DIR__. '../../include/model/admin.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupération des données du formulaire
+    $titre = $_POST['titre'] ?? '';
+    $date_debut = $_POST['date_debut'] ?? '';
+    $date_fin = $_POST['date_fin'] ?? '';
+    $description = $_POST['description'] ?? '';
+    $etat = $_POST['etat'] ?? '';
+    $montant_financement = $_POST['montant_financement'] ?? 0;
+    $partenaires = $_POST['partenaires'] ?? '';
+    $objectifs = $_POST['objectifs'] ?? '';
+    $domaines = $_POST['domaines'] ?? '';
+    
+    // Appel de la fonction du modèle pour créer le projet
+    $result = createProjet(
+        $titre,
+        $date_debut,
+        $date_fin,
+        $description,
+        $etat,
+        $montant_financement,
+        $partenaires,
+        $objectifs,
+        $domaines,
+        null, // image_projet sera géré dans la fonction createProjet
+        null  // video_projet sera géré dans la fonction createProjet
+    );
 
-// Relier le model Projet à la vue create.php 
-
-if (isset($_POST['valider'])) {
-
-    if (
-        !empty($_POST['titre']) &&
-        !empty($_POST['date_debut']) &&
-        !empty($_POST['date_fin']) &&
-        !empty($_POST['description']) &&
-        !empty($_POST['etat']) &&
-        !empty($_POST['montant_financement']) &&
-        !empty($_POST['partenaires']) &&
-        !empty($_POST['objectifs']) &&
-        !empty($_POST['domaines']) &&
-        !empty($_POST['image_projet']) &&
-        !empty($_POST['video_projet'])
-    ) {
-
-        // Appel de la fonction d'insertion 
-        $response = createProjet(
-            $_POST['titre'],
-            $_POST['date_debut'],
-            $_POST['date_fin'],
-            $_POST['description'],
-            $_POST['etat'],
-            $_POST['montant_financement'],
-            $_POST['partenaires'],
-            $_POST['objectifs'],
-            $_POST['domaines'],
-            $_POST['image_projet'],
-            $_POST['video_projet']
-        );
-
-        if ($response) {
-            $success_msg = "Insertion réussie";
-        } else {
-            $error_msg = "Une erreur s'est produite";
-        }
+    if ($result) {
+        // Redirection avec message de succès
+        header("Location: /../../include/view/admin/createProjet.php?success=true");
+        exit();
+    } else {
+        // Redirection avec message d'erreur
+        header("Location: ../../include/view/admin/createProjet.php?error=true");
+        exit();
     }
 }
+?>

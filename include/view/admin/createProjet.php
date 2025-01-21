@@ -13,17 +13,37 @@ require_once __DIR__ . "/../../../controller/admin/createProjet.php";
     <style>
         .popup-success {
             position: fixed;
-            top: 20%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1050;
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #0B2F75;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             display: none;
+            text-align: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .popup-error {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1050;
+            background-color: #dc3545;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
         }
         .form-container {
             background: #ffffff;
@@ -124,7 +144,7 @@ include '../conponents/header.php';
             </h3>
             <div class="mb-3">
                 <label for="title" class="form-label">Titre du Projet</label>
-                <input type="text" class="form-control" id="title" name="titre" placeholder="Entrez le titre du projet">
+                <input type="text" class="form-control" id="title" name="titre_projet" required placeholder="Entrez le titre du projet">
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -132,14 +152,14 @@ include '../conponents/header.php';
                         <i class="far fa-calendar-alt me-1"></i>
                         Date de Début
                     </label>
-                    <input type="date" class="form-control" name="date_debut" id="start_date">
+                    <input type="date" class="form-control" name="date_debut_projet" id="start_date" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="end_date" class="form-label">
                         <i class="far fa-calendar-alt me-1"></i>
                         Date de Fin
                     </label>
-                    <input type="date" class="form-control" name="date_fin" id="end_date">
+                    <input type="date" class="form-control" name="date_fin_projet" id="end_date" required>
                 </div>
             </div>
         </div>
@@ -152,11 +172,11 @@ include '../conponents/header.php';
             </h3>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Décrivez le projet en détail"></textarea>
+                <textarea class="form-control" id="description" name="description_projet" rows="4" required placeholder="Décrivez le projet en détail"></textarea>
             </div>
             <div class="mb-3">
                 <label for="objectives" class="form-label">Objectifs</label>
-                <textarea class="form-control" id="objectives" name="objectifs" rows="3" placeholder="Listez les objectifs principaux du projet"></textarea>
+                <textarea class="form-control" id="objectives" name="objectifs_projet" rows="3" required placeholder="Listez les objectifs principaux du projet"></textarea>
             </div>
         </div>
 
@@ -174,7 +194,7 @@ include '../conponents/header.php';
                     </label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input type="number" class="form-control" id="funding" name="montant_financement" placeholder="Montant">
+                        <input type="number" class="form-control" id="funding" name="montant_financement_projet" required placeholder="Montant">
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -182,7 +202,7 @@ include '../conponents/header.php';
                         <i class="fas fa-users me-1"></i>
                         Partenaires
                     </label>
-                    <input type="text" class="form-control" id="partner" name="partenaires" placeholder="Noms des partenaires">
+                    <input type="text" class="form-control" id="partner" name="partenaires_projet" required placeholder="Noms des partenaires">
                 </div>
             </div>
         </div>
@@ -196,14 +216,14 @@ include '../conponents/header.php';
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="status" class="form-label">État du Projet</label>
-                    <select class="form-select" id="status" name="etat">
+                    <select class="form-select" id="status" name="etat_projet" required>
                         <option value="en cours">En cours</option>
                         <option value="finalisé">Finalisé</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="domain" class="form-label">Domaine</label>
-                    <input type="text" class="form-control" id="domain" name="domaines" placeholder="Domaine de recherche">
+                    <input type="text" class="form-control" id="domain" name="domaines_projet" required placeholder="Domaine de recherche">
                 </div>
             </div>
         </div>
@@ -247,19 +267,35 @@ include '../conponents/header.php';
 </div>
 
 <div class="popup-success" id="popup-success">
-    <i class="fas fa-check-circle me-2"></i>
-    Projet ajouté avec succès ! Vous serez redirigé sous peu...
+    <i class="fas fa-check-circle fa-3x mb-3"></i>
+    <h4>Succès!</h4>
+    <p>Projet ajouté avec succès!</p>
+</div>
+
+<div class="popup-error" id="popup-error">
+    <i class="fas fa-times-circle fa-3x mb-3"></i>
+    <h4>Erreur!</h4>
+    <p>Une erreur s'est produite lors de la création du projet.</p>
 </div>
 
 <?php include '../conponents/footer.php'; ?>
 
 <script>
-    const popup = document.getElementById('popup-success');
+    const popupSuccess = document.getElementById('popup-success');
+    const popupError = document.getElementById('popup-error');
+
     <?php if (isset($_GET['success']) && $_GET['success'] === 'true'): ?>
-        popup.style.display = 'block';
+        popupSuccess.style.display = 'block';
         setTimeout(() => {
-            popup.style.display = 'none';
-            window.location.href = '../../../index.php';
+            popupSuccess.style.display = 'none';
+            window.location.href = '../admin/showProjetAd.php';
+        }, 3000);
+    <?php endif; ?>
+
+    <?php if (isset($_GET['error']) && $_GET['error'] === 'true'): ?>
+        popupError.style.display = 'block';
+        setTimeout(() => {
+            popupError.style.display = 'none';
         }, 3000);
     <?php endif; ?>
 </script>

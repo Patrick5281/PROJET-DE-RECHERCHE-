@@ -1,11 +1,24 @@
 <?php
 
-require_once __DIR__. '/../../model/auteur.php';
+require_once __DIR__. '/../../include/model/admin.php';
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $projet = getProjetById($id);
+    
+    if (!$projet) {
+        header('Location: ../../include/view/admin/showProjetAd.php?error=notfound');
+        exit();
+    }
+} else {
+    header('Location: ../../include/view/admin/showProjetAd.php?error=noid');
+    exit();
+}
 
 // Relier le model auteur à la vue edit.php 
-$id= $_GET['id'];
+//$id= $_GET['id'];
 
-$auteur = editProjet($id);
+//$auteur = editProjet($id);
 
 // if (isset($_POST['valider'])) {
 
